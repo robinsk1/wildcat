@@ -1,17 +1,8 @@
 require "test_helper"
 
 class WildcatPriorityAreasControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @wildcat_priority_area = wildcat_priority_areas(:one)
-  end
-
-  test "should get index" do
-    get wildcat_priority_areas_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_wildcat_priority_area_url
+  test "should get polygons that contain coordinate" do
+    get contains_wildcat_priority_areas_url, params: { coord: "25.346688401045476 -71.73249306285165" }
     assert_response :success
   end
 end

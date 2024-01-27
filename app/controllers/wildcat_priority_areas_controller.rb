@@ -1,24 +1,27 @@
 class WildcatPriorityAreasController < ApplicationController
-  before_action :set_wildcat_priority_area, only: %i[ show edit update destroy ]
+  before_action :set_wildcat_priority_area, only: :show
 
-  # GET /wildcat_priority_areas
-  def index
-    @wildcat_priority_areas = WildcatPriorityArea.all
-  end
-
-  # GET /wildcat_priority_areas/1
   def show
   end
 
   def contains
-  end
+    split = params[:coord].split(' ').first
 
-  def within
+    lat = split[0].to_f
+    lon = split[1].to_f
+
+    areas = WildcatPriorityArea.contains(lat, lon)
+
+    render(json: json_for(areas))
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_wildcat_priority_area
-      @wildcat_priority_area = WildcatPriorityArea.find(params[:id])
-    end
+
+  def json_for(areas)
+    areas.map { |area| WildcatPriorityAreaResource.new(area).serialize }
+  end
+
+  def set_wildcat_priority_area
+    @wildcat_priority_area = WildcatPriorityArea.find(params[:id])
+  end
 end
