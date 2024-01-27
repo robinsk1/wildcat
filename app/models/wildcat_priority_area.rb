@@ -1,7 +1,9 @@
 class WildcatPriorityArea < ApplicationRecord
-  def self.contains(lat, lon)
-    point = RGeo::Geos.factory(srid: 4326).point(lat, lon)
+  def self.contains(lon, lat)
+    point = RGeo::Geos.factory(srid: 4326).point(lon, lat)
+
     areas = WildcatPriorityArea.arel_table
+    
     WildcatPriorityArea.where(areas[:wkb_geometry].st_contains(point))
   end
 

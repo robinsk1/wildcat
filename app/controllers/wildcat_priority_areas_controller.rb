@@ -5,12 +5,12 @@ class WildcatPriorityAreasController < ApplicationController
   end
 
   def contains
-    split = params[:coord].split(' ').first
+    split = params[:coord].split(' ')
 
     lat = split[0].to_f
     lon = split[1].to_f
 
-    areas = WildcatPriorityArea.contains(lat, lon)
+    areas = WildcatPriorityArea.contains(lon, lat)
 
     render(json: json_for(areas))
   end

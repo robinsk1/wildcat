@@ -6,10 +6,7 @@ class WildcatPriorityAreaResource
   end
 
   attribute :geometry do |resource|
-    {
-      type: 'Polygon',
-      coordinates: [resource.wkb_geometry]
-    }
+    RGeo::GeoJSON.encode(resource.wkb_geometry)
   end
 
   attribute :properties do |resource|
