@@ -23,8 +23,7 @@ rails db:create && rake db:migrate
 
 * Database initialization
 
-rake data:wildcat_priority_area_import:
-
+rake data:wildcat_priority_area_import
 
 * How to run the test suite
 
