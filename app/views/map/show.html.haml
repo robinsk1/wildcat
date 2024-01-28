@@ -1,2 +1,5 @@
-#map.leaflet-container{ style: 'min-height: 400px' }
-  %div{ data: { controller: 'map', 'map-geourl-value': within_wildcat_priority_areas_path(xmin: 49.48928947880723, ymin: -28.09770372410344, xmax: 61.475330548968856, ymax: 22.83491346339656) } } 
+
+.container.mx-auto.px-4.py-4
+  %div.grid.grid-cols-1.gap-2
+    %div#map.leaflet-container
+      %div{ data: { controller: 'map', 'map-geourl-value': within_wildcat_priority_areas_path(xmin: 49.48928947880723, ymin: -28.09770372410344, xmax: 61.475330548968856, ymax: 22.83491346339656) } } 

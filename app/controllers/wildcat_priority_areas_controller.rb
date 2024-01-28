@@ -32,7 +32,10 @@ class WildcatPriorityAreasController < ApplicationController
       geoJson = {}
       geoJson[:type] = 'Feature'
       geoJson[:geometry] = RGeo::GeoJSON.encode(area.wkb_geometry)
-      geoJson[:properties] = { status: area.status }
+      geoJson[:properties] = { status: area.status,
+                               location: area.location,
+                               shape_length: area.shape_length,
+                               shape_area: area.shape_area}
       array << geoJson
     end
   end

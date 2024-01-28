@@ -28,11 +28,20 @@ export default class extends Controller {
         return response.json();
       })
       .then( function (json) {
-        var latlngs = L.geoJson(json)
-        var polys = L.geoJson(json, {style: myStyle }).addTo(map);
+        var polys = L.geoJson(json, {
+          onEachFeature: function (feature, layer) {
+            layer.addEventListener("click", () => {
+              layer.bindPopup("status: " + feature.properties.status + ", location: " + feature.properties.location + ", shape_length: " + feature.properties.shape_length + ", shape_area: " + feature.properties.shape_area);
+            });
+          }
+        });
+
+        polys.addTo(map);
+
         map.fitBounds(polys.getBounds());
       })
   }
+
 
   disconnect(){
     this.map.remove()
