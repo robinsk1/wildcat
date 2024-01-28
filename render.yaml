@@ -1,19 +1,24 @@
 databases:
-  - name: postgis
-    ipAllowList: []
+  - name: postgres
     databaseName: wildcat
     user: wildcat
+    plan: free
 
 services:
   - type: web
     name: wildcat
-    env: ruby
+    runtime: ruby
+    plan: free
+    
     buildCommand: "./render-build.sh"
+
     startCommand: "bundle exec rails s"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: postgis
+          name: postgres
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+      - key: WEB_CONCURRENCY
+        value: 2
