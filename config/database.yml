@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: wildcat_production
   username: wildcat
   password: <%= ENV["WILDCAT_DATABASE_PASSWORD"] %>
