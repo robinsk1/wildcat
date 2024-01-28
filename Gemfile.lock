@@ -85,6 +85,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.17.1)
       msgpack (~> 1.2)
+    brakeman (6.1.1)
+      racc
     builder (3.2.4)
     capybara (3.40.0)
       addressable
@@ -282,6 +284,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgis-adapter
   bootsnap
+  brakeman
   capybara
   debug
   haml-rails
