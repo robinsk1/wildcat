@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'map/show'
+
   resources :wildcat_priority_areas, only: %i[show] do 
     get :contains, on: :collection
     get :within, on: :collection
