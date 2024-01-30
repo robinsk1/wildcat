@@ -1,11 +1,6 @@
 # WILDCAT 
 
-> https://wildcat-jrgm.onrender.com
-
-deploy ok but missing data layer due to an issue with Rgeos on amazon-linux (render, fly.io) https://github.com/rgeo/rgeo/issues/365 :(
-
 dockerfile includes `libgeos-dev` required to build rgeos
-
 
 * API docs
 > https://documenter.getpostman.com/view/1500771/2s9Yyqj3CU
@@ -16,7 +11,7 @@ dockerfile includes `libgeos-dev` required to build rgeos
 
 * System dependencies
 
-> `libgeos-dev` if on debian linux
+> `libgeos-dev`
 
 > install postgresql db app (https://postgresapp.com/downloads.html) 
 
