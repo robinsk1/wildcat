@@ -28,6 +28,14 @@ RUN apt-get update -qq && \
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
+From build as dev
+
+RUN bundle install
+
+EXPOSE 3000
+
+CMD ["./bin/rails", "s", "-p", "3000", "-b", "0.0.0.0"]
+
 # Final stage for app image
 FROM build as prod
 
@@ -57,13 +65,5 @@ USER rails:rails
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 
-CMD ["./bin/rails", "s", "-p", "3000", "-b", "0.0.0.0"]
-
-From build as dev
-
-RUN bundle install
-
-EXPOSE 3000
-
-CMD ["./bin/rails", "s", "-p", "3000", "-b", "0.0.0.0"]
+CMD ["./bin/rails", "s", "-p", "10000", "-b", "0.0.0.0"]
 
